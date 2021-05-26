@@ -2651,9 +2651,9 @@ sender_data_nonce = ExpandWithLabel(sender_data_secret, "nonce", ciphertext_samp
        committer's contribution to the group and provides PCS with
        regard to the committer.
 
-   2.  An "add-only" Commit that references only Add proposals, in which
-       the path is optional.  Such a commit provides PCS with regard to
-       the committer only if the path field is present.
+   2.  A "partial" Commit that references Add, PreSharedKey, or ReInit
+       proposals but where the path is empty.  Such a commit doesn't
+       provide PCS with regard to the committer.
 
    3.  A "full" Commit that references proposals of any type, which
        provides FS with regard to any removed members and PCS for the
