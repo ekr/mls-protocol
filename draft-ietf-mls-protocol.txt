@@ -5,7 +5,7 @@
 Network Working Group                                          R. Barnes
 Internet-Draft                                                     Cisco
 Intended status: Informational                             B. Beurdouche
-Expires: 9 September 2021                                          Inria
+Expires: 27 November 2021                                          Inria
                                                              J. Millican
                                                                 Facebook
                                                                 E. Omara
@@ -14,7 +14,7 @@ Expires: 9 September 2021                                          Inria
                                                     University of Oxford
                                                                R. Robert
                                                                     Wire
-                                                            8 March 2021
+                                                             26 May 2021
 
 
               The Messaging Layer Security (MLS) Protocol
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 September 2021.
+   This Internet-Draft will expire on 27 November 2021.
 
 Copyright Notice
 
@@ -2983,7 +2983,7 @@ sender_data_nonce = ExpandWithLabel(sender_data_secret, "nonce", ciphertext_samp
    struct {
      opaque joiner_secret<1..255>;
      optional<PathSecret> path_secret;
-     optional<PreSharedKeys> psks;
+     PreSharedKeys psks;
    } GroupSecrets;
 
    struct {
@@ -3755,75 +3755,51 @@ sender_data_nonce = ExpandWithLabel(sender_data_secret, "nonce", ciphertext_samp
 17.  Contributors
 
    *  Joel Alwen
-
       Wickr
-
       joel.alwen@wickr.com
 
    *  Karthikeyan Bhargavan
-
       INRIA
-
       karthikeyan.bhargavan@inria.fr
 
    *  Cas Cremers
-
       University of Oxford
-
       cremers@cispa.de
 
    *  Alan Duric
-
       Wire
-
       alan@wire.com
 
    *  Britta Hale
-
       Naval Postgraduate School
-
       britta.hale@nps.edu
 
    *  Srinivas Inguva
-
       Twitter
-
       singuva@twitter.com
 
    *  Konrad Kohbrok
-
       Aalto University
-
       konrad.kohbrok@datashrine.de
 
    *  Albert Kwon
-
       MIT
-
       kwonal@mit.edu
 
    *  Brendan McMillion
-
       Cloudflare
-
       brendan@cloudflare.com
 
    *  Eric Rescorla
-
       Mozilla
-
       ekr@rtfm.com
 
    *  Michael Rosenberg
-
       Trail of Bits
-
       michael.rosenberg@trailofbits.com
 
    *  Thyla van der Merwe
-
       Royal Holloway, University of London
-
       thyla.van.der@merwe.tech
 
 18.  References
@@ -3892,16 +3868,16 @@ sender_data_nonce = ExpandWithLabel(sender_data_secret, "nonce", ciphertext_samp
               Omara, E., Beurdouche, B., Rescorla, E., Inguva, S., Kwon,
               A., and A. Duric, "The Messaging Layer Security (MLS)
               Architecture", Work in Progress, Internet-Draft, draft-
-              ietf-mls-architecture-05, 26 July 2020,
+              ietf-mls-architecture-06, 8 March 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-mls-
-              architecture-05.txt>.
+              architecture-06.txt>.
 
    [I-D.ietf-trans-rfc6962-bis]
               Laurie, B., Langley, A., Kasper, E., Messeri, E., and R.
               Stradling, "Certificate Transparency Version 2.0", Work in
-              Progress, Internet-Draft, draft-ietf-trans-rfc6962-bis-34,
-              4 November 2019, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-trans-rfc6962-bis-34.txt>.
+              Progress, Internet-Draft, draft-ietf-trans-rfc6962-bis-39,
+              17 May 2021, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-trans-rfc6962-bis-39.txt>.
 
    [RFC8032]  Josefsson, S. and I. Liusvaara, "Edwards-Curve Digital
               Signature Algorithm (EdDSA)", RFC 8032,
