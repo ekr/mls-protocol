@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-05-23T01:16:16.909902+00:00",
+  "timestamp": "2021-05-27T01:38:16.787030+00:00",
   "repo": "mlswg/mls-protocol",
   "labels": [
     {
@@ -32074,7 +32074,7 @@
       "labels": [],
       "body": "This PR changes the draft such that it mandates identities SHOULD be unique per group.\r\n\r\nIn particular, a committer SHOULD only include one Add per identity if multiple are present and SHOULD NOT include Adds for identities that are already members of the group.\r\n\r\nI also made the requirement more precise, that there shouldn't be multiple Adds for the same \"client\", which I change \"client\" to \"KeyPackage\".",
       "createdAt": "2020-11-17T09:13:12Z",
-      "updatedAt": "2021-04-14T14:29:31Z",
+      "updatedAt": "2021-05-26T15:32:59Z",
       "baseRepository": "mlswg/mls-protocol",
       "baseRefName": "main",
       "baseRefOid": "57bb2954265c57896249dcb2bbb04788205fb466",
@@ -32127,6 +32127,13 @@
           "body": "This looks almost good! I think it's missing the rule that Commits MUST be rejected if they contain identities that are not unique.",
           "createdAt": "2021-03-02T14:53:50Z",
           "updatedAt": "2021-03-02T14:53:50Z"
+        },
+        {
+          "author": "seanturner",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Discussed at 20210526 Interim. Look to merge.",
+          "createdAt": "2021-05-26T15:32:59Z",
+          "updatedAt": "2021-05-26T15:32:59Z"
         }
       ],
       "reviews": [
@@ -32654,7 +32661,7 @@
       "labels": [],
       "body": "This is a proposal to change how the `joiner_secret` is derived. Before, it was derived simply by derivation with a label. This Pull Request updates this step to include the GroupContext, similar to how the `epoch_secret` is derived. Including the GroupContext will give stronger uniqueness guarantees on the `joiner_secret` cryptographically speaking. I think the GroupContext in the derivation of the `epoch_secret` should be kept as it proves that joiners have learned the GroupContext through the Welcome message as well.",
       "createdAt": "2020-12-31T12:59:41Z",
-      "updatedAt": "2021-04-14T14:29:31Z",
+      "updatedAt": "2021-05-26T15:35:35Z",
       "baseRepository": "mlswg/mls-protocol",
       "baseRefName": "main",
       "baseRefOid": "96efaf0633b2d0e861f06f4ba489c6193dea6052",
@@ -32700,6 +32707,13 @@
           "body": "Thanks for the explanation, @ericcornelissen.  Makes sense to me.",
           "createdAt": "2021-03-08T14:29:22Z",
           "updatedAt": "2021-03-08T14:29:22Z"
+        },
+        {
+          "author": "seanturner",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Discussed at 20210526 Interim. No downsides noted at this point. @kkohbrok agreed to review and provide any additional input.",
+          "createdAt": "2021-05-26T15:35:35Z",
+          "updatedAt": "2021-05-26T15:35:35Z"
         }
       ],
       "reviews": [
@@ -32743,7 +32757,7 @@
       "labels": [],
       "body": "- add the missing `authenticated_data` field to `MLSPlaintextCommitContent`\r\n- the sections for the `Commit` sender and `Commit` receiver seem to have gotten out of sync.  I tried to sync them up (but let me know if I messed something up)\r\n- fix a typo",
       "createdAt": "2021-01-21T23:21:53Z",
-      "updatedAt": "2021-04-14T14:29:31Z",
+      "updatedAt": "2021-05-26T15:38:25Z",
       "baseRepository": "mlswg/mls-protocol",
       "baseRefName": "main",
       "baseRefOid": "da9333b8227e969f56b6c20d63b9ff836eb79dd5",
@@ -32761,6 +32775,13 @@
           "body": "I've tried to align with the current mlspp code for how to process commits.  If the current mlspp code is incorrect, or if I'm reading it incorrectly, I'm more than happy to fix my changes to reflect the correct behaviour.",
           "createdAt": "2021-03-26T22:37:38Z",
           "updatedAt": "2021-03-26T22:37:38Z"
+        },
+        {
+          "author": "seanturner",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@bifurcation @raphaelrobert took action item to review editorial changes.",
+          "createdAt": "2021-05-26T15:38:25Z",
+          "updatedAt": "2021-05-26T15:38:25Z"
         }
       ],
       "reviews": [
@@ -33027,6 +33048,26 @@
               "updatedAt": "2021-03-27T00:44:01Z"
             }
           ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjY5MTkzMjIx",
+          "commit": {
+            "abbreviatedOid": "93ff197"
+          },
+          "author": "seanturner",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-05-26T15:37:40Z",
+          "updatedAt": "2021-05-26T15:37:40Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "Discussed at 20210526 Interim. Will split out authenticated_data change to another PR so it can be merged. Editorial changes continue to be reviewed.",
+              "createdAt": "2021-05-26T15:37:40Z",
+              "updatedAt": "2021-05-26T15:37:40Z"
+            }
+          ]
         }
       ]
     },
@@ -33035,24 +33076,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTcxODM0MDMw",
       "title": "Make PreSharedKeys non optional in GroupSecrets",
       "url": "https://github.com/mlswg/mls-protocol/pull/455",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "raphaelrobert",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Currently the `psks` field in `GroupSecrets` is optional. `PreSharedKeys` only contains an array, which can be empty, even if the option is not empty. To avoid undefined behavior, I removed the option. In case no PSKs are used, the array should simply be empty.",
       "createdAt": "2021-02-11T13:52:59Z",
-      "updatedAt": "2021-04-14T14:29:31Z",
+      "updatedAt": "2021-05-26T15:40:07Z",
       "baseRepository": "mlswg/mls-protocol",
       "baseRefName": "main",
       "baseRefOid": "96efaf0633b2d0e861f06f4ba489c6193dea6052",
       "headRepository": "mlswg/mls-protocol",
       "headRefName": "raphaelrobert/optional-group-secrets",
       "headRefOid": "480022ba441d1ee9aacad1f140d402d309839da0",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2021-05-26T15:39:57Z",
+      "mergedAt": "2021-05-26T15:39:57Z",
+      "mergedBy": "raphaelrobert",
+      "mergeCommit": {
+        "oid": "d1e067f98158342a950f514ea76e13abc357b59c"
+      },
       "comments": [
         {
           "author": "beurdouche",
@@ -33074,6 +33117,20 @@
           "body": "@beurdouche Can you point to the TLS syntax for that one? What I'm concerned about is specifically the UB, there has to be a better way to define this.",
           "createdAt": "2021-03-02T14:19:49Z",
           "updatedAt": "2021-03-02T14:19:49Z"
+        },
+        {
+          "author": "seanturner",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Discussed at 20210526 Interim: As long as there is some input you can have an empty list. No impact on security.",
+          "createdAt": "2021-05-26T15:39:37Z",
+          "updatedAt": "2021-05-26T15:39:37Z"
+        },
+        {
+          "author": "seanturner",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "merge",
+          "createdAt": "2021-05-26T15:40:07Z",
+          "updatedAt": "2021-05-26T15:40:07Z"
         }
       ],
       "reviews": [
@@ -33332,7 +33389,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2021-03-08T06:00:39Z",
-      "updatedAt": "2021-04-14T14:29:31Z",
+      "updatedAt": "2021-05-26T15:40:48Z",
       "baseRepository": "mlswg/mls-protocol",
       "baseRefName": "main",
       "baseRefOid": "da9333b8227e969f56b6c20d63b9ff836eb79dd5",
@@ -33343,7 +33400,15 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "seanturner",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "202105 Interim: To be reviewed by editors.",
+          "createdAt": "2021-05-26T15:40:48Z",
+          "updatedAt": "2021-05-26T15:40:48Z"
+        }
+      ],
       "reviews": []
     },
     {
@@ -33358,7 +33423,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2021-03-08T06:03:01Z",
-      "updatedAt": "2021-04-14T14:29:31Z",
+      "updatedAt": "2021-05-26T15:43:18Z",
       "baseRepository": "mlswg/mls-protocol",
       "baseRefName": "main",
       "baseRefOid": "da9333b8227e969f56b6c20d63b9ff836eb79dd5",
@@ -33369,7 +33434,15 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "seanturner",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "(briefly) Discussed at 20210526 Interim: Debate about whether this is required at the protocol level. @grittygrease @seanturner to review discussion on list and determine way forward.",
+          "createdAt": "2021-05-26T15:43:18Z",
+          "updatedAt": "2021-05-26T15:43:18Z"
+        }
+      ],
       "reviews": []
     },
     {
@@ -33384,7 +33457,7 @@
       "labels": [],
       "body": "Just a small editorial change to clarify which extensions should be included in the `GroupContext`. There is a paragraph explaining that the `RatchetTreeExtension` should not go in, but I think the section on the `GroupContext` should be precise about what _does_ go in.\r\n\r\nI did notice, though, that we currently don't have a way of actually changing extensions during the lifetime of the group. If someone wanted to change an extensions, they would currently have to re-init the whole group. Of course, this could be solved by an extension, but maybe it would be sensible to have an `Extension` proposal for that purpose?",
       "createdAt": "2021-03-09T11:50:17Z",
-      "updatedAt": "2021-04-14T14:29:31Z",
+      "updatedAt": "2021-05-26T15:45:51Z",
       "baseRepository": "mlswg/mls-protocol",
       "baseRefName": "main",
       "baseRefOid": "da9333b8227e969f56b6c20d63b9ff836eb79dd5",
@@ -33395,7 +33468,15 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "kkohbrok",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "We should decide if we want to tackle #473 before discussing this further.",
+          "createdAt": "2021-05-26T15:45:51Z",
+          "updatedAt": "2021-05-26T15:45:51Z"
+        }
+      ],
       "reviews": []
     },
     {
@@ -33403,25 +33484,35 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTg5MTI3MjQ1",
       "title": "Rename add-only Commit to partial Commit.",
       "url": "https://github.com/mlswg/mls-protocol/pull/465",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "Bren2010",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2021-03-10T06:17:11Z",
-      "updatedAt": "2021-04-14T14:29:31Z",
+      "updatedAt": "2021-05-26T15:45:04Z",
       "baseRepository": "mlswg/mls-protocol",
       "baseRefName": "main",
       "baseRefOid": "da9333b8227e969f56b6c20d63b9ff836eb79dd5",
       "headRepository": "Bren2010/mls-protocol",
       "headRefName": "brendan/asdf3",
       "headRefOid": "3a7d2aea12e678c4c5691fcc97b520623cabb0f6",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "closedAt": "2021-05-26T15:45:04Z",
+      "mergedAt": "2021-05-26T15:45:04Z",
+      "mergedBy": "raphaelrobert",
+      "mergeCommit": {
+        "oid": "7a698d46c83b57f5cb2097eec8ffaa58875e7000"
+      },
+      "comments": [
+        {
+          "author": "seanturner",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Discussed at 20210526 Interim. Merge.",
+          "createdAt": "2021-05-26T15:45:02Z",
+          "updatedAt": "2021-05-26T15:45:02Z"
+        }
+      ],
       "reviews": [
         {
           "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjA4NTExNzg0",
@@ -33469,25 +33560,35 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTk2ODg1MzMz",
       "title": "Minor fixes to message formats",
       "url": "https://github.com/mlswg/mls-protocol/pull/466",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bifurcation",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This PR fixes a few small issues I noticed while reviewing mlspp for compliance with the spec:\r\n\r\n* The size of the `Extension.extension_data` vector needs to expand `2^32-1` to support trees for large groups\r\n* The content of the `parent_hash` extension is specified\r\n* `authenticated_data` is included in `MLSPlaintextCommitContent` so that it goes into the transcript\r\n* `MLSPlaintextAuthData` now carries an `optional<MAC>` even though the value is always present, so that the transcript matches the data on the wire",
       "createdAt": "2021-03-19T21:24:37Z",
-      "updatedAt": "2021-04-14T14:29:31Z",
+      "updatedAt": "2021-05-26T15:47:05Z",
       "baseRepository": "mlswg/mls-protocol",
       "baseRefName": "main",
       "baseRefOid": "da9333b8227e969f56b6c20d63b9ff836eb79dd5",
       "headRepository": "mlswg/mls-protocol",
       "headRefName": "message-fixes",
       "headRefOid": "b5c460460070b2e8aed9d6620c056c913c4739d0",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "closedAt": "2021-05-26T15:47:04Z",
+      "mergedAt": "2021-05-26T15:47:04Z",
+      "mergedBy": "raphaelrobert",
+      "mergeCommit": {
+        "oid": "ba6614efc4c2bc44cdc11c9914b2a37d4b340b84"
+      },
+      "comments": [
+        {
+          "author": "seanturner",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Discussed at 20210526 Interim. Merge",
+          "createdAt": "2021-05-26T15:46:59Z",
+          "updatedAt": "2021-05-26T15:46:59Z"
+        }
+      ],
       "reviews": [
         {
           "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjE3MDYyMjA5",
@@ -33555,7 +33656,7 @@
       "labels": [],
       "body": "I noticed a bunch of typos in the \"IANA Considerations\" section: the \"ciphersuites\" and \"credentials\" were probably copy-pasted from the \"extension\" one, and some parts were not changed correctly.\r\n\r\nThis PR fixes these typos.",
       "createdAt": "2021-05-05T16:11:11Z",
-      "updatedAt": "2021-05-05T16:11:11Z",
+      "updatedAt": "2021-05-26T15:48:02Z",
       "baseRepository": "mlswg/mls-protocol",
       "baseRefName": "main",
       "baseRefOid": "da9333b8227e969f56b6c20d63b9ff836eb79dd5",
@@ -33566,7 +33667,15 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "seanturner",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Discussed 20210526 Interim: editorial will be taken up by editors.",
+          "createdAt": "2021-05-26T15:48:02Z",
+          "updatedAt": "2021-05-26T15:48:02Z"
+        }
+      ],
       "reviews": []
     },
     {
@@ -33574,26 +33683,50 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NjQ2NzMzNjc2",
       "title": "Use HPKE draft-08",
       "url": "https://github.com/mlswg/mls-protocol/pull/471",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "franziskuskiefer",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "draft-08 is the latest HPKE draft, which should be stable. It is also what's being used for interop testing right now.",
       "createdAt": "2021-05-18T13:03:50Z",
-      "updatedAt": "2021-05-18T13:03:50Z",
+      "updatedAt": "2021-05-26T15:48:32Z",
       "baseRepository": "mlswg/mls-protocol",
       "baseRefName": "main",
       "baseRefOid": "da9333b8227e969f56b6c20d63b9ff836eb79dd5",
       "headRepository": "franziskuskiefer/mls-protocol",
       "headRefName": "patch-3",
       "headRefOid": "4e4bd1eb168c1165bbfdec7203ebe29334a70c2f",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "closedAt": "2021-05-26T15:48:27Z",
+      "mergedAt": "2021-05-26T15:48:27Z",
+      "mergedBy": "raphaelrobert",
+      "mergeCommit": {
+        "oid": "05fe1daacd66006f600869f6bc05bc9efb1530ed"
+      },
+      "comments": [
+        {
+          "author": "seanturner",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Discussed 20210526 Interim: Merge.",
+          "createdAt": "2021-05-26T15:48:32Z",
+          "updatedAt": "2021-05-26T15:48:32Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjY5MjA1Njcx",
+          "commit": {
+            "abbreviatedOid": "4e4bd1e"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-05-26T15:48:31Z",
+          "updatedAt": "2021-05-26T15:48:31Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
