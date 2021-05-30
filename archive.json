@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-05-27T01:38:16.787030+00:00",
+  "timestamp": "2021-05-30T02:15:56.639420+00:00",
   "repo": "mlswg/mls-protocol",
   "labels": [
     {
@@ -32757,13 +32757,13 @@
       "labels": [],
       "body": "- add the missing `authenticated_data` field to `MLSPlaintextCommitContent`\r\n- the sections for the `Commit` sender and `Commit` receiver seem to have gotten out of sync.  I tried to sync them up (but let me know if I messed something up)\r\n- fix a typo",
       "createdAt": "2021-01-21T23:21:53Z",
-      "updatedAt": "2021-05-26T15:38:25Z",
+      "updatedAt": "2021-05-27T19:13:53Z",
       "baseRepository": "mlswg/mls-protocol",
       "baseRefName": "main",
-      "baseRefOid": "da9333b8227e969f56b6c20d63b9ff836eb79dd5",
+      "baseRefOid": "05fe1daacd66006f600869f6bc05bc9efb1530ed",
       "headRepository": "uhoreg/mls-protocol",
       "headRefName": "editorial-changes-2021-01-21",
-      "headRefOid": "93ff197d8f936dea49fde6a1f9436e3f37c5803d",
+      "headRefOid": "2f4e8a6ae1a0bfb7a888bcb53fd3fc0fc963fe2e",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
