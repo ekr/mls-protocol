@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-05-30T02:15:56.639420+00:00",
+  "timestamp": "2021-06-06T01:28:04.758491+00:00",
   "repo": "mlswg/mls-protocol",
   "labels": [
     {
@@ -4497,9 +4497,17 @@
       "labels": [],
       "body": "The terminology used in these sections is different, so that it's unclear if they're descriptions of the same operation with different levels of detail or entirely different operations performed at different times. I come in having read most of the original white paper, so that my intuition is that it's one operation performed against data stored in the tree structure. As such, I'm unclear how the `init_secret`->`epoch_secret` relates to the `leaf_secret` via the \"number of secrets [that] are derived from the epoch secret for different purposes\".\r\n\r\nAlso, The Group Creation section makes no reference to any of these secrets by name. I would kind of expect something called, `init_secret`, to be involved during group creation, but it doesn't seem like that's necessary. \r\n\r\nI may have missed it, but it's also unclear if an application message causes a new epoch or if that's reserved only for structural changes to the tree.",
       "createdAt": "2021-04-28T15:44:52Z",
-      "updatedAt": "2021-04-28T15:44:52Z",
+      "updatedAt": "2021-06-04T19:02:31Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "knightcode",
+          "authorAssociation": "NONE",
+          "body": "Can you add the definition of `commit_secret` definition to [Ratchet Tree Evolution](https://github.com/mlswg/mls-protocol/blob/main/draft-ietf-mls-protocol.md#ratchet-tree-evolution)?",
+          "createdAt": "2021-06-04T19:02:31Z",
+          "updatedAt": "2021-06-04T19:02:31Z"
+        }
+      ]
     },
     {
       "number": 470,
