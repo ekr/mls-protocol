@@ -4076,13 +4076,13 @@ Authors' Addresses
    Benjamin Beurdouche
    Inria & Mozilla
 
-   Email: benjamin.beurdouche@inria.fr
+   Email: ietf@beurdouche.com
 
 
    Raphael Robert
    Wire
 
-   Email: raphael@wire.com
+   Email: ietf@raphaelrobert.com
 
 
    Jon Millican
