@@ -5,7 +5,7 @@
 Network Working Group                                          R. Barnes
 Internet-Draft                                                     Cisco
 Intended status: Informational                             B. Beurdouche
-Expires: 25 December 2021                                          Inria
+Expires: 25 December 2021                                Inria & Mozilla
                                                              J. Millican
                                                                 Facebook
                                                                 E. Omara
@@ -4074,7 +4074,7 @@ Authors' Addresses
 
 
    Benjamin Beurdouche
-   Inria
+   Inria & Mozilla
 
    Email: benjamin.beurdouche@inria.fr
 
