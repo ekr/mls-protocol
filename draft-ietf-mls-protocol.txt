@@ -6,14 +6,14 @@ Network Working Group                                          R. Barnes
 Internet-Draft                                                     Cisco
 Intended status: Informational                             B. Beurdouche
 Expires: 25 December 2021                                Inria & Mozilla
+                                                               R. Robert
+                                                                    Wire
                                                              J. Millican
                                                                 Facebook
                                                                 E. Omara
                                                                   Google
                                                           K. Cohn-Gordon
                                                     University of Oxford
-                                                               R. Robert
-                                                                    Wire
                                                             23 June 2021
 
 
@@ -4079,6 +4079,12 @@ Authors' Addresses
    Email: benjamin.beurdouche@inria.fr
 
 
+   Raphael Robert
+   Wire
+
+   Email: raphael@wire.com
+
+
    Jon Millican
    Facebook
 
@@ -4095,9 +4101,3 @@ Authors' Addresses
    University of Oxford
 
    Email: me@katriel.co.uk
-
-
-   Raphael Robert
-   Wire
-
-   Email: raphael@wire.com
