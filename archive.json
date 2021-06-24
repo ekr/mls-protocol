@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-06-10T01:04:40.539417+00:00",
+  "timestamp": "2021-06-24T00:45:39.928624+00:00",
   "repo": "mlswg/mls-protocol",
   "labels": [
     {
@@ -4497,7 +4497,7 @@
       "labels": [],
       "body": "The terminology used in these sections is different, so that it's unclear if they're descriptions of the same operation with different levels of detail or entirely different operations performed at different times. I come in having read most of the original white paper, so that my intuition is that it's one operation performed against data stored in the tree structure. As such, I'm unclear how the `init_secret`->`epoch_secret` relates to the `leaf_secret` via the \"number of secrets [that] are derived from the epoch secret for different purposes\".\r\n\r\nAlso, The Group Creation section makes no reference to any of these secrets by name. I would kind of expect something called, `init_secret`, to be involved during group creation, but it doesn't seem like that's necessary. \r\n\r\nis `authenticated_data` defined anywhere? Is it application level data to be included as desired?",
       "createdAt": "2021-04-28T15:44:52Z",
-      "updatedAt": "2021-06-08T21:57:34Z",
+      "updatedAt": "2021-06-23T15:13:31Z",
       "closedAt": null,
       "comments": [
         {
@@ -4520,6 +4520,27 @@
           "body": "Could you specifically call out where the authentication tag created by AES-256-GCM is stored? Some implementations will need to find it and pass it in as a param to `open()`.",
           "createdAt": "2021-06-08T21:57:34Z",
           "updatedAt": "2021-06-08T21:57:34Z"
+        },
+        {
+          "author": "knightcode",
+          "authorAssociation": "NONE",
+          "body": "The group creation and external init parts of the doc each have discussions in two parts. It'd be easier to follow if they were consolidated. I would suggest moving the group creation section up to the other relevant parts and maybe introduce the other concepts in the context of group creation... that's how implementations would start.",
+          "createdAt": "2021-06-23T14:03:13Z",
+          "updatedAt": "2021-06-23T14:03:13Z"
+        },
+        {
+          "author": "knightcode",
+          "authorAssociation": "NONE",
+          "body": "I'm not sure why there needs to be two ratchets per leaf node. It seems like they never get ratcheted at the same time, and they both get reset during the same event(s).",
+          "createdAt": "2021-06-23T14:04:36Z",
+          "updatedAt": "2021-06-23T14:04:36Z"
+        },
+        {
+          "author": "knightcode",
+          "authorAssociation": "NONE",
+          "body": "It was easier for me to understand the `resolution`  concept as just a kind of depth first search through the sibling's tree, favoring the left child, for a public or private key. If building an update path follows the addition of empty nodes, then for each step up the tree, the sibling's tree is not going to have filled any new key pairs yet, so that conducting a search at that moment is only going to resolve a public key from the previous epoch. ",
+          "createdAt": "2021-06-23T15:13:30Z",
+          "updatedAt": "2021-06-23T15:13:30Z"
         }
       ]
     },
@@ -33671,24 +33692,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NjMwNzI2ODk3",
       "title": "Fix typos in the \"IANA Considerations\" section",
       "url": "https://github.com/mlswg/mls-protocol/pull/469",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "TWal",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "I noticed a bunch of typos in the \"IANA Considerations\" section: the \"ciphersuites\" and \"credentials\" were probably copy-pasted from the \"extension\" one, and some parts were not changed correctly.\r\n\r\nThis PR fixes these typos.",
       "createdAt": "2021-05-05T16:11:11Z",
-      "updatedAt": "2021-05-26T15:48:02Z",
+      "updatedAt": "2021-06-23T10:22:09Z",
       "baseRepository": "mlswg/mls-protocol",
       "baseRefName": "main",
       "baseRefOid": "da9333b8227e969f56b6c20d63b9ff836eb79dd5",
       "headRepository": "TWal/mls-protocol",
       "headRefName": "twal_iana_typos",
       "headRefOid": "a7e2fec4adc29fc2d7b05b4f6d580ea92b311174",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2021-06-23T10:22:02Z",
+      "mergedAt": "2021-06-23T10:22:02Z",
+      "mergedBy": "beurdouche",
+      "mergeCommit": {
+        "oid": "8216b7904caa54a822202863f38f3a9956e30388"
+      },
       "comments": [
         {
           "author": "seanturner",
@@ -33696,6 +33719,13 @@
           "body": "Discussed 20210526 Interim: editorial will be taken up by editors.",
           "createdAt": "2021-05-26T15:48:02Z",
           "updatedAt": "2021-05-26T15:48:02Z"
+        },
+        {
+          "author": "beurdouche",
+          "authorAssociation": "MEMBER",
+          "body": "Thanks!",
+          "createdAt": "2021-06-23T10:22:09Z",
+          "updatedAt": "2021-06-23T10:22:09Z"
         }
       ],
       "reviews": []
