@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-06-24T00:45:39.928624+00:00",
+  "timestamp": "2021-06-27T01:04:38.609567+00:00",
   "repo": "mlswg/mls-protocol",
   "labels": [
     {
@@ -4497,7 +4497,7 @@
       "labels": [],
       "body": "The terminology used in these sections is different, so that it's unclear if they're descriptions of the same operation with different levels of detail or entirely different operations performed at different times. I come in having read most of the original white paper, so that my intuition is that it's one operation performed against data stored in the tree structure. As such, I'm unclear how the `init_secret`->`epoch_secret` relates to the `leaf_secret` via the \"number of secrets [that] are derived from the epoch secret for different purposes\".\r\n\r\nAlso, The Group Creation section makes no reference to any of these secrets by name. I would kind of expect something called, `init_secret`, to be involved during group creation, but it doesn't seem like that's necessary. \r\n\r\nis `authenticated_data` defined anywhere? Is it application level data to be included as desired?",
       "createdAt": "2021-04-28T15:44:52Z",
-      "updatedAt": "2021-06-23T15:13:31Z",
+      "updatedAt": "2021-06-24T22:13:44Z",
       "closedAt": null,
       "comments": [
         {
@@ -4541,6 +4541,13 @@
           "body": "It was easier for me to understand the `resolution`  concept as just a kind of depth first search through the sibling's tree, favoring the left child, for a public or private key. If building an update path follows the addition of empty nodes, then for each step up the tree, the sibling's tree is not going to have filled any new key pairs yet, so that conducting a search at that moment is only going to resolve a public key from the previous epoch. ",
           "createdAt": "2021-06-23T15:13:30Z",
           "updatedAt": "2021-06-23T15:13:30Z"
+        },
+        {
+          "author": "knightcode",
+          "authorAssociation": "NONE",
+          "body": "What does this mean? Is part of the sentence missing?\r\n\r\n```\r\nTruncate the tree by reducing the size of tree until the rightmost non-blank leaf node\r\n```\r\n ",
+          "createdAt": "2021-06-24T22:13:44Z",
+          "updatedAt": "2021-06-24T22:13:44Z"
         }
       ]
     },
