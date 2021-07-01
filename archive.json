@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-06-27T01:04:38.609567+00:00",
+  "timestamp": "2021-07-01T01:01:03.289418+00:00",
   "repo": "mlswg/mls-protocol",
   "labels": [
     {
@@ -4497,7 +4497,7 @@
       "labels": [],
       "body": "The terminology used in these sections is different, so that it's unclear if they're descriptions of the same operation with different levels of detail or entirely different operations performed at different times. I come in having read most of the original white paper, so that my intuition is that it's one operation performed against data stored in the tree structure. As such, I'm unclear how the `init_secret`->`epoch_secret` relates to the `leaf_secret` via the \"number of secrets [that] are derived from the epoch secret for different purposes\".\r\n\r\nAlso, The Group Creation section makes no reference to any of these secrets by name. I would kind of expect something called, `init_secret`, to be involved during group creation, but it doesn't seem like that's necessary. \r\n\r\nis `authenticated_data` defined anywhere? Is it application level data to be included as desired?",
       "createdAt": "2021-04-28T15:44:52Z",
-      "updatedAt": "2021-06-24T22:13:44Z",
+      "updatedAt": "2021-06-30T16:33:25Z",
       "closedAt": null,
       "comments": [
         {
@@ -4548,6 +4548,20 @@
           "body": "What does this mean? Is part of the sentence missing?\r\n\r\n```\r\nTruncate the tree by reducing the size of tree until the rightmost non-blank leaf node\r\n```\r\n ",
           "createdAt": "2021-06-24T22:13:44Z",
           "updatedAt": "2021-06-24T22:13:44Z"
+        },
+        {
+          "author": "knightcode",
+          "authorAssociation": "NONE",
+          "body": "Leaving it to applications to determine how many resumption secrets to maintain creates a problem with ExternalInit's. The external init is predicated entirely on public group state, so that the new member(s) will not have any resumption secrets from prior epochs as determined by the application. If one of those resumption secrets is employed, the group fractures.\r\n\r\nMoreover, I'm not seeing how one resumption_secret alone is enough for a recovery operation... if that's one of its intended uses, which seems to be implied. There's not much to go on in the doc, but it seems to suggest the resumption secret is included in the key derivation schedule as a PSK. But the schedule also requires an init_secret and a commit_secret as inputs, which a recovering node cannot rely on to be in sync with the group.",
+          "createdAt": "2021-06-30T14:20:25Z",
+          "updatedAt": "2021-06-30T14:20:25Z"
+        },
+        {
+          "author": "knightcode",
+          "authorAssociation": "NONE",
+          "body": "For members, A, C, and D of a 4 member group, where A performed the additions of B,C, and D and then broadcast a Welcome message to all the others, their respective trees would look like the following after each adds their own private keys locally:\r\n```\r\n         p[3]                  p[3]                   p[3]\r\n        /     \\              /      \\               /     \\\r\n     p[1]       _          p[1]       _          p[1]       _\r\n     /  \\      / \\         /  \\      / \\         /  \\      / \\\r\n    p[A] B    C   D       A    B  p[C]  D       A    B    C p[D]\r\n```\r\n`p[x]` denotes that a public/private key pair resides at node x\r\n\r\nIf node performs an another tree update, e.g. adds another member, when computing the updatePath for node 3, it must select a public key from the subtree rooted at node 5 (the underscore). No key pair has been computed for node 5 yet, so that it would select the public key for node C and proceed. This, however, prevents node D from decrypting the path_secret for node 3 because D does not know the private key for C. If A is to encrypt the path_secret multiple times---each with a different key---what's the protocol? How many copies are enough? Does the number of copies have to grow with the size of the tree?",
+          "createdAt": "2021-06-30T16:33:24Z",
+          "updatedAt": "2021-06-30T16:33:24Z"
         }
       ]
     },
