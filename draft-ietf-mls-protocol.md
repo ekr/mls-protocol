@@ -2243,6 +2243,12 @@ leaf in the tree, for the second Add, the next empty leaf to the right, etc.
   public key from the KeyPackage in the Add, as well as the credential under
   which the KeyPackage was signed
 
+The identity, as well as the signature key contained in the credential of the
+`key_package` MUST be unique in the context of the group. While the proposer can
+not necessarily know if that is the case, the committer of the proposal MUST
+consider the proposal invalid if a credential with the same identity is already
+present in the group.
+
 ### Update
 
 An Update proposal is a similar mechanism to Add with the distinction
@@ -2484,8 +2490,14 @@ If there are multiple proposals that apply to the same leaf, the committer
 chooses one and includes only that one in the Commit, considering the rest
 invalid. The committer MUST prefer any Remove received, or the most recent
 Update for the leaf if there are no Removes. If there are multiple Add proposals
-for the same client, the committer again chooses one to include and considers
-the rest invalid.
+referencing the same `key_package`, the committer again chooses one to include
+and considers the rest invalid.
+
+If there are multiple Add proposals of KeyPackages with the same identity or
+signature key, the committer MUST choose one and consider the rest invalid.
+Similarly, if there are Add proposals of KeyPackages with an identity or
+signature key that is already present as a member of the group, the committer
+MUST consider them invalid.
 
 The Commit MUST NOT combine proposals sent within different epochs. In the event
 that a valid proposal is omitted from the next Commit, the sender of the
@@ -2643,9 +2655,10 @@ A member of the group applies a Commit message by taking the following steps:
   any Update or Remove proposals, or if it's empty. Otherwise, the `path` value
   MAY be omitted.
 
-* If the `path` value is populated: Process the `path` value using the ratchet
-  tree the provisional GroupContext, to update the ratchet tree and generate the
-  `commit_secret`:
+* If the `path` value is populated: Verify that the identity and signature key
+  of the credential in the new leaf are unique for this group. Then process the
+  `path` value using the ratchet tree the provisional GroupContext, to update
+  the ratchet tree and generate the `commit_secret`:
 
   * Apply the UpdatePath to the tree, as described in
     {{synchronizing-views-of-the-tree}}, and store `leaf_key_package` at the
